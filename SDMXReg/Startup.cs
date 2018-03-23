@@ -8,6 +8,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
+using SDMXReg.Models;
+
+
 
 namespace SDMXReg
 {
@@ -23,6 +27,8 @@ namespace SDMXReg
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<SDMXContext>(opt => opt.UseInMemoryDatabase("SDMXList"));
+                
             services.AddMvc();
         }
 
